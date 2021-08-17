@@ -8,6 +8,7 @@ function App() {
 
   const [word, setWord] = useState("");
   const [meanings, setMeanings] = useState([]);
+  const [category, setCategory] = useState("en");
 
   const dictionaryAPICall = async() => {
     try {
@@ -16,7 +17,7 @@ function App() {
       );
 
       console.log('The data is...');
-      console.log(data.data);
+      console.log(data.data); 
       setMeanings(data.data);
       console.log('end....');
     } catch (error) {
@@ -39,7 +40,12 @@ function App() {
       maxWidth='md' 
       style={{ display: "flex", flexDirection: "column", height: "100vh"}}
     >
-      <Header />
+      <Header 
+        category={category} 
+        setCategory={setCategory} 
+        word={word}
+        setWord={setWord}
+        />
     </Container>
   </div>
 }

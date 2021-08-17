@@ -14,4 +14,24 @@
 }
 
 .inputs {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.select {
+}
+
+/* If max-width is lesser than 900px ... 
+
+
+*/
+@media (max-width: 900px) {
+  .header {
+    /* justify-content: space-evenly; */
+    height: 25vh;
+  }
+  .title {
+    font-size: 11vw;
+  }
 }

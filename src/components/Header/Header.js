@@ -3,7 +3,7 @@ import React from 'react';
 import './Header.css';
 import categories from '../../data/categories';
 
-const Header = () => {
+const Header = ({category, setCategory, word, setWord}) => {
 
     const darkTheme = createTheme({
         palette: {
@@ -17,20 +17,28 @@ const Header = () => {
     return (
         <div className='header'>
             <span className='title'>
-                WORD HUNT
+                {word? word : "Word Hunt"}
             </span>
             <div className='inputs'>
                 <ThemeProvider theme={darkTheme}>
-                    {/* <TextField id='standard-basic' label="Standard" /> */}
+                    <TextField 
+                        id='standard-basic' 
+                        label="Word" 
+                        className="search" 
+                        value={word}
+                        onChange={(event) => setWord(event.target.value)}    
+                    />
+
                     <TextField
-                        id='standard-select-currency'
                         select
-                        label="Select"
-                        helperText="Please select your currency"
+                        label="Language"
+                        className="select"
+                        value={category}
+                        onChange={(event) => setCategory(event.target.value)}
                     >
                         {
                             categories.map((category) => (
-                                <MenuItem >
+                                <MenuItem key={category.value} value={category.label}>
                                     {category.value}
                                 </MenuItem>
                             ))
