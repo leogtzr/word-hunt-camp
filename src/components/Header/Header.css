@@ -1,8 +1,17 @@
 .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  height: 30vh;
+  width: 100%;
 }
 
 .title {
   font-size: 7vw;
   text-transform: uppercase;
   font-family: "Montserrat", sans-serif;
+}
+
+.inputs {
 }
