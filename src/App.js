@@ -1,25 +1,47 @@
-import logo from './logo.svg';
 import './App.css';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { Container } from '@material-ui/core';
+import Header from './components/Header/Header';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+  const [word, setWord] = useState("");
+  const [meanings, setMeanings] = useState([]);
+
+  const dictionaryAPICall = async() => {
+    try {
+      const data = await axios.get(
+        "https://api.dictionaryapi.dev/api/v2/entries/en/plane"
+      );
+
+      console.log('The data is...');
+      console.log(data.data);
+      setMeanings(data.data);
+      console.log('end....');
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  console.log(meanings);
+
+  useEffect(() => {
+    dictionaryAPICall();
+  }, []);
+  // if [] is empty, then the code is executed when the component is first rendered.
+
+  return <div className="App" style={{ height:'100vh', backgroundColor: '#282c34', color: 'white' }}>
+    {/* {
+      meanings ? <p>hmm</p> : <p>Empty</p>
+    } */}
+    <Container 
+      maxWidth='md' 
+      style={{ display: "flex", flexDirection: "column", height: "100vh"}}
+    >
+      <Header />
+    </Container>
+  </div>
 }
 
 export default App;
