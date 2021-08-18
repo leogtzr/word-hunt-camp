@@ -4,6 +4,9 @@ import axios from 'axios';
 import { Container } from '@material-ui/core';
 import Header from './components/Header/Header';
 import Definitions from './components/definitions/Definitions';
+import { withStyles } from '@material-ui/core/styles';
+import { grey } from '@material-ui/core/colors';
+import Switch from '@material-ui/core/Switch';
 
 function App() {
 
@@ -22,6 +25,20 @@ function App() {
       console.log(error);
     }
   };
+
+  const PurpleSwitch = withStyles({
+    switchBase: {
+      color: grey[300],
+      '&$checked': {
+        color: grey[500],
+      },
+      '&$checked + $track': {
+        backgroundColor: grey[500],
+      },
+    },
+    checked: {},
+    track: {},
+  })(Switch);
 
   console.log(meanings);
 
