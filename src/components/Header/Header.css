@@ -19,7 +19,9 @@
   justify-content: space-around;
 }
 
-.select {
+.select,
+.search {
+  width: 43%;
 }
 
 /* If max-width is lesser than 900px ... 
